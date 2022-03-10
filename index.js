@@ -1,7 +1,7 @@
 const express = require('express')
 const app = express();
 const port = process.env.PORT || 4000;
-const importData = require('./data.json')
+const {products , locations} = require('./data.json')
 
 app.use((req, res, next) => {
     res.header({"Access-Control-Allow-Origin": "*"});
@@ -9,7 +9,15 @@ app.use((req, res, next) => {
   }) 
 
 app.get('/',(req,res)=>{
-    res.send(importData)
+    res.send("welcome to wingrow api")
+})
+
+app.get('/products',(req,res)=>{
+    res.send(products)
+})
+
+app.get('/locations',(req,res)=>{
+    res.send(locations)
 })
 
 app.listen(port , ()=>{
